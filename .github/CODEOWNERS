@@ -1,0 +1,5 @@
+* @parking-lima/team-frontend
+
+/.github/workflows/ @parking-lima/team-security
+/Dockerfile @parking-lima/team-security
+/.github/CODEOWNERS @parking-lima/team-security
