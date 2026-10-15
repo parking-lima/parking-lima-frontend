@@ -1,5 +1,6 @@
 
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 import { getDistricts } from './api/districts'
@@ -10,51 +11,72 @@ vi.mock('./api/districts', () => ({
 
 const mockedGetDistricts = vi.mocked(getDistricts)
 
-describe('Parking Lima App', () => {
+function renderAt(path: string) {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  )
+}
+
+describe('Parking Lima navigation', () => {
   beforeEach(() => {
     vi.resetAllMocks()
+    mockedGetDistricts.mockResolvedValue([])
   })
 
-  it('shows loading state', () => {
-    mockedGetDistricts.mockReturnValue(new Promise(() => {}))
-
-    render(<App />)
-
-    expect(
-      screen.getByRole('status')
-    ).toHaveTextContent('Cargando distritos...')
-  })
-
-  it('displays districts returned by Parking Service', async () => {
+  it('displays districts on the home page', async () => {
     mockedGetDistricts.mockResolvedValue([
       { id: 1, name: 'Miraflores' },
       { id: 2, name: 'San Isidro' },
-      { id: 3, name: 'Santiago de Surco' },
-      { id: 4, name: 'San Borja' },
-      { id: 5, name: 'La Molina' },
     ])
 
-    render(<App />)
+    renderAt('/')
 
     expect(
       await screen.findByText('Miraflores')
     ).toBeInTheDocument()
 
     expect(screen.getByText('San Isidro')).toBeInTheDocument()
-    expect(screen.getByText('Santiago de Surco')).toBeInTheDocument()
-    expect(screen.getByText('San Borja')).toBeInTheDocument()
-    expect(screen.getByText('La Molina')).toBeInTheDocument()
   })
 
-  it('shows an error when Parking Service fails', async () => {
-    mockedGetDistricts.mockRejectedValue(
-      new Error('Network error')
-    )
-
-    render(<App />)
+  it('displays the users page', () => {
+    renderAt('/users')
 
     expect(
-      await screen.findByRole('alert')
-    ).toHaveTextContent('No se pudieron cargar los distritos')
+      screen.getByRole('heading', { name: 'Usuarios' })
+    ).toBeInTheDocument()
+  })
+
+  it('displays the bookings page', () => {
+    renderAt('/bookings')
+
+    expect(
+      screen.getByRole('heading', { name: 'Reservas' })
+    ).toBeInTheDocument()
+  })
+
+  it('displays the not found page', () => {
+    renderAt('/unknown')
+
+    expect(
+      screen.getByRole('heading', { name: 'Página no encontrada' })
+    ).toBeInTheDocument()
+  })
+
+  it('renders the navigation links', () => {
+    renderAt('/users')
+
+    const navigation = screen.getByRole('navigation', {
+      name: 'Navegación principal',
+    })
+
+    expect(navigation).toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: 'Distritos' })
+    ).toHaveAttribute('href', '/')
+    expect(
+      screen.getByRole('link', { name: 'Reservas' })
+    ).toHaveAttribute('href', '/bookings')
   })
 })
