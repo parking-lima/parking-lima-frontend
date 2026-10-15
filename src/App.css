@@ -120,3 +120,27 @@ header p {
   color: #64748b;
   overflow-wrap: anywhere;
 }
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.booking-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  color: #0f172a;
+}
+
+.booking-card span {
+  color: #475569;
+}
