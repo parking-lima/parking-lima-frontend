@@ -1,12 +1,14 @@
 
 import { useEffect, useState } from 'react'
 import { getDistricts, type District } from '../api/districts'
+import ParkingExplorer from '../components/ParkingExplorer'
 
 export default function DistrictsPage() {
   const [districts, setDistricts] = useState<District[]>([])
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null)
 
   useEffect(() => {
     let active = true
@@ -118,11 +120,25 @@ export default function DistrictsPage() {
                 <p>Lima, Perú</p>
 
                 <span className="district-explore">
-                  Distrito disponible →
+                  <button
+                    type="button"
+                    className="district-select"
+                    onClick={() => setSelectedDistrict(district)}
+                  >
+                    Ver estacionamientos →
+                  </button>
                 </span>
               </article>
             ))}
           </div>
+        )}
+
+        {selectedDistrict && (
+          <ParkingExplorer
+            key={selectedDistrict.id}
+            districtId={selectedDistrict.id}
+            districtName={selectedDistrict.name}
+          />
         )}
       </section>
     </div>

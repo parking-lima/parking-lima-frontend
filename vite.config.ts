@@ -18,6 +18,10 @@ export default defineConfig({
         target: 'http://127.0.0.1:3000',
         changeOrigin: true,
       },
+      '/api/v1/parkings': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+      },
     },
   },
 })
