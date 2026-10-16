@@ -7,6 +7,8 @@ import {
   type ParkingSpace,
 } from '../api/parkings'
 
+import BookingForm from './BookingForm'
+
 interface ParkingExplorerProps {
   districtId: number
   districtName: string
@@ -23,6 +25,7 @@ export default function ParkingExplorer({
   const [loadingSpaces, setLoadingSpaces] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [spacesError, setSpacesError] = useState<string | null>(null)
+  const [selectedSpace, setSelectedSpace] = useState<number | null>(null)
 
   useEffect(() => {
     let active = true
@@ -75,10 +78,13 @@ export default function ParkingExplorer({
 
 
   function selectParking(parkingId: number) {
+    if (selectedParking === parkingId) return
+
     setSelectedParking(parkingId)
     setSpaces([])
     setSpacesError(null)
     setLoadingSpaces(true)
+    setSelectedSpace(null)
   }
 
   return (
@@ -123,15 +129,39 @@ export default function ParkingExplorer({
                   {!loadingSpaces && !spacesError && spaces.length > 0 && (
                     <div className="spaces-grid">
                       {spaces.map((space) => (
+
                         <div key={space.id} className="space-item">
                           <strong>{space.code}</strong>
+
                           <span>
                             {space.is_active ? 'Habilitado' : 'Inhabilitado'}
                           </span>
+
+                          {space.is_active && (
+                            <button
+                              type="button"
+                              onClick={() => setSelectedSpace(space.id)}
+                            >
+                              Reservar
+                            </button>
+                          )}
                         </div>
+
                       ))}
                     </div>
                   )}
+
+                  {!loadingSpaces &&
+                    !spacesError &&
+                    spaces
+                      .filter((space) => space.id === selectedSpace && space.is_active)
+                      .map((space) => (
+                        <BookingForm
+                          key={space.id}
+                          parkingSpaceId={space.id}
+                          spaceCode={space.code}
+                        />
+                      ))}
                 </div>
               )}
             </article>
