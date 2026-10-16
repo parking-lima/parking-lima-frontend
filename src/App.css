@@ -144,3 +144,298 @@ header p {
 .booking-card span {
   color: #475569;
 }
+
+
+/* Parking Lima — Homepage */
+
+.home-page {
+  width: 100%;
+}
+
+.hero {
+  background: linear-gradient(135deg, #10263b, #164e63);
+  color: white;
+  border-radius: 20px;
+  padding: 64px 48px;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.hero-label,
+.section-label {
+  color: #14b8a6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.hero h1 {
+  margin: 20px 0;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.hero h1 span {
+  color: #5eead4;
+}
+
+.hero-content > p {
+  color: #cbd5e1;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.search-panel {
+  margin-top: 32px;
+  padding: 22px;
+  border-radius: 14px;
+  background: white;
+  color: #0f172a;
+}
+
+.search-panel label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.search-field input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font: inherit;
+  color: #0f172a;
+  background: #fff;
+}
+
+.search-field input:focus {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}
+
+.districts-section {
+  padding: 48px 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin: 8px 0;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.section-heading p {
+  color: #64748b;
+}
+
+.district-counter {
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.district-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.district-card {
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: white;
+  color: #0f172a;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.district-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.district-icon {
+  font-size: 28px;
+}
+
+.district-card h3 {
+  margin: 18px 0 6px;
+}
+
+.district-card p {
+  color: #64748b;
+  margin: 0;
+}
+
+.district-explore {
+  display: inline-block;
+  margin-top: 24px;
+  color: #0d9488;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 24px;
+  }
+
+  .district-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .district-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Application layout */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-inner,
+.footer-inner {
+  width: min(100% - 40px, 1180px);
+  margin: 0 auto;
+}
+
+.header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #10263b;
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: #0d9488;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.nav-link.active {
+  background: #ccfbf1;
+  color: #115e59;
+}
+
+.main-content {
+  width: min(100% - 40px, 1180px);
+  margin: 0 auto;
+  flex: 1;
+  padding: 32px 0 64px;
+}
+
+.site-footer {
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.footer-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.footer-inner span:first-child {
+  color: #10263b;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    padding: 16px 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .main-nav {
+    justify-content: space-between;
+  }
+
+  .nav-link {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding-top: 20px;
+  }
+
+  .footer-inner {
+    padding: 20px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+  }
+}
