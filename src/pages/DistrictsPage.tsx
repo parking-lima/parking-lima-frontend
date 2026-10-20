@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { getDistricts, type District } from '../api/districts'
 import ParkingExplorer from '../components/ParkingExplorer'
+import heroImage from '../assets/hero.webp'
 
 export default function DistrictsPage() {
   const [districts, setDistricts] = useState<District[]>([])
@@ -74,6 +75,14 @@ export default function DistrictsPage() {
             </div>
           </div>
         </div>
+
+        <div className="hero-visual">
+          <img
+            src={heroImage}
+            alt="Ilustración de estacionamiento Parking Lima con vehículos y espacios"
+            className="hero-image"
+          />
+        </div>
       </section>
 
       <section className="districts-section">
@@ -112,22 +121,28 @@ export default function DistrictsPage() {
                 key={district.id}
                 className="district-card"
               >
-                <div className="district-icon" aria-hidden="true">
-                  📍
+
+                <div className="district-card-content">
+                  <div className="district-icon" aria-hidden="true">
+                    ⌖
+                  </div>
+
+                  <div className="district-details">
+                    <h3>{district.name}</h3>
+                    <p>Lima, Perú</p>
+                  </div>
                 </div>
 
-                <h3>{district.name}</h3>
-                <p>Lima, Perú</p>
+                <button
+                  type="button"
+                  className="district-select"
+                  aria-pressed={selectedDistrict?.id === district.id}
+                  onClick={() => setSelectedDistrict(district)}
+                >
+                  <span>Explorar distrito</span>
+                  <span aria-hidden="true">→</span>
+                </button>
 
-                <span className="district-explore">
-                  <button
-                    type="button"
-                    className="district-select"
-                    onClick={() => setSelectedDistrict(district)}
-                  >
-                    Ver estacionamientos →
-                  </button>
-                </span>
               </article>
             ))}
           </div>

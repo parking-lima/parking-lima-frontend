@@ -62,7 +62,9 @@ describe('Parking Lima navigation', () => {
     renderAt('/users')
 
     expect(
-      screen.getByRole('heading', { name: 'Usuarios' })
+      screen.getByRole('heading', {
+        name: 'Usuarios registrados',
+      })
     ).toBeInTheDocument()
 
     expect(
