@@ -1475,3 +1475,29 @@ header p {
     padding: 20px;
   }
 }
+
+/* Ajustes responsive del formulario */
+
+.booking-form {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.booking-form select,
+.booking-form input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.booking-form-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 600px) {
+  .booking-form-row {
+    grid-template-columns: 1fr;
+  }
+}
