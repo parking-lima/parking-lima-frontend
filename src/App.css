@@ -1502,3 +1502,102 @@ header p {
   }
 }
 
+
+/* Yellow Edition — Final bookings layout */
+
+.bookings-page .bookings-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bookings-page .bookings-grid .booking-card-modern {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  text-align: left;
+}
+
+.bookings-page .booking-card-modern .booking-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bookings-page .booking-card-modern .booking-status {
+  display: inline-flex;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.bookings-page .booking-card-modern .booking-card-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.bookings-page .booking-card-modern .booking-card-meta > div,
+.bookings-page .booking-card-modern .booking-card-dates > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bookings-page .booking-card-modern .booking-card-meta strong,
+.bookings-page .booking-card-modern .booking-card-dates strong {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.bookings-page .booking-card-modern .booking-card-meta small {
+  display: block;
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.bookings-page .booking-card-modern .booking-card-dates {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .bookings-page .booking-card-modern .booking-card-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Yellow Edition — últimos retoques de Reservas */
+
+.bookings-page .booking-card-modern {
+  gap: 16px;
+}
+
+.bookings-page .booking-card-modern .booking-status-pending {
+  display: inline-flex;
+  background: #fff2b3;
+  color: #715800;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bookings-page .booking-card-modern .booking-card-meta {
+  padding-top: 14px;
+  gap: 12px;
+}
+
+.bookings-page .booking-card-modern .booking-card-dates {
+  padding: 14px;
+  gap: 12px;
+}
