@@ -130,22 +130,34 @@ export default function ParkingExplorer({
                     <div className="spaces-grid">
                       {spaces.map((space) => (
 
-                        <div key={space.id} className="space-item">
+
+                        <div
+                          key={space.id}
+                          className={`space-item ${selectedSpace === space.id ? 'space-item-selected' : ''
+                            } ${!space.is_active ? 'space-item-disabled' : ''}`}
+                        >
+                          <span className="space-symbol" aria-hidden="true">
+                            🚘
+                          </span>
+
                           <strong>{space.code}</strong>
 
-                          <span>
+                          <span className="space-status">
                             {space.is_active ? 'Habilitado' : 'Inhabilitado'}
                           </span>
 
                           {space.is_active && (
                             <button
                               type="button"
+                              className="space-select-button"
+                              aria-pressed={selectedSpace === space.id}
                               onClick={() => setSelectedSpace(space.id)}
                             >
-                              Reservar
+                              {selectedSpace === space.id ? 'Seleccionado' : 'Seleccionar'}
                             </button>
                           )}
                         </div>
+
 
                       ))}
                     </div>
