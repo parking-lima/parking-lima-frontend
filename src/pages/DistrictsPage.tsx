@@ -129,7 +129,7 @@ export default function DistrictsPage() {
 
                   <div className="district-details">
                     <h3>{district.name}</h3>
-                    <p>Lima, Perú</p>
+                    <p>Lima, Perú . Sudamerica</p>
                   </div>
                 </div>
 
