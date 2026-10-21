@@ -144,7 +144,7 @@ export default function BookingsPage() {
         </span>
 
         <h1>Reservas</h1>
-        <p>Consulta aquí el detalle de tus reservas en Parking Lima.</p>
+        <p>Reservas registradas en Parking Lima</p>
       </div>
 
       {loading && (
@@ -156,7 +156,7 @@ export default function BookingsPage() {
       )}
 
       {!loading && !error && bookings.length === 0 && (
-        <p>Aún no tienes reservas registradas.</p>
+        <p>No hay reservas registradas.</p>
       )}
 
       {!loading && !error && bookings.length > 0 && (
